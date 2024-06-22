@@ -1,4 +1,5 @@
 import os
+import sys
 from ultralytics import YOLOv10, YOLO
 import torchvision
 import torch
@@ -100,23 +101,23 @@ def obscure_non_intersection(image, specific_box, boxes, box2):
     return result_image
 
 def main(image, cam_detection = False, cam_cls = False):
+    
+    model_det = YOLOv10(MODEL_DET_PATH)
+    model_cls = YOLO(MODEL_CLS_PATH)
 
-    result_path = f"Risultati/{os.path.splitext(os.path.basename(TEST_PATH+image))[0]}"
+    result_path = f"Risultati/{os.path.splitext(os.path.basename(image))[0]}"
     classification_path = f"{result_path}/classificazione"
 
     os.makedirs(result_path, exist_ok=True)
 
-    model_det = YOLOv10(MODEL_DET_PATH)
-    model_cls = YOLO(MODEL_CLS_PATH)
-
-    result = model_det(TEST_PATH+image, imgsz=512)
+    result = model_det(image, imgsz=512)
     
     if cam_detection:
-        detection_cam(TEST_PATH+image).save(f'{result_path}/cam_detection.jpg')
+        detection_cam(image).save(f'{result_path}/cam_detection.jpg')
 
-    image_pil = Image.open(TEST_PATH+image)
+    image_pil = Image.open(image)
     bounding_boxes = result[0].boxes.xyxy
-    np_array_image2 = cv2.imread(TEST_PATH+image)
+    np_array_image2 = cv2.imread(image)
 
     for i, (box, box2) in enumerate(zip(result[0].boxes.xyxy, result[0].boxes.xywh)):
         
@@ -128,7 +129,7 @@ def main(image, cam_detection = False, cam_cls = False):
         height = int(y_max1.item()*3)
         width = int(y_max1.item()*3)
         
-        np_array_image = cv2.imread(TEST_PATH+image)
+        np_array_image = cv2.imread(image)
         result_image = obscure_non_intersection(np_array_image, box, bounding_boxes, box2)
         
         img_width, img_height = image_pil.size
@@ -164,5 +165,11 @@ def main(image, cam_detection = False, cam_cls = False):
 
 list_img = os.listdir(TEST_PATH)
 
-for img in list_img:
-    main(img, cam_detection=False, cam_cls=True)
+if len(sys.argv) > 1:
+    img = sys.argv[1]
+    cam_det = sys.argv[2] if len(sys.argv) > 2 else False
+    cam_cls = sys.argv[3] if len(sys.argv) > 3 else False
+    main(img, cam_detection=cam_det, cam_cls=cam_cls)
+else:
+    for img in list_img:
+        main(TEST_PATH+img, cam_detection=False, cam_cls=False)
