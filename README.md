@@ -37,7 +37,7 @@ python3 net2step.py
 
 ## Risultati
 
-I risultati verranno salvati all'interno della cartella di progetto, in particolare nella cartella 'Risultati'.
+I risultati verranno salvati all'interno della cartella di progetto, in particolare nella cartella `Risultati`.
 Ogni immagine processata avrà una propria sotto-cartella con il nome dell'immagine.
 
 ```css
