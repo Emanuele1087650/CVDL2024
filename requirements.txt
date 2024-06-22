@@ -1,0 +1,4 @@
+git+https://github.com/THU-MIG/yolov10.git
+huggingface_hub
+ttach
+grad-cam
