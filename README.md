@@ -27,8 +27,13 @@ Creare e attivare un ambiente `Conda`:
 ```bash
 conda create -n net2step python=3.9
 conda activate net2step
+```
+
+Installare le dipendenze necessarie:
+```bash
 pip install -r requirements.txt
 ```
+
 ## Utilizzo
 
 La funzione main accetta tre parametri opzionali per eseguire la detection e la classificazione a due step.
