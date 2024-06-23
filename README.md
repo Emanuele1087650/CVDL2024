@@ -69,6 +69,8 @@ Con il comando seguente verrà fatta l'inferenza su tutte le immagini nella cart
 python3 net2step.py
 ```
 
+### Esempio
+
 Di seguito è riportato un esempio di utilizzo sulle immagini della cartella `test` attivando `<Grad-Cam>`:
 ```bash
 python3 net2step.py 'test' True False
