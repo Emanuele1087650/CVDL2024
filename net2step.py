@@ -167,8 +167,8 @@ list_img = os.listdir(TEST_PATH)
 
 if len(sys.argv) > 1:
     img = sys.argv[1]
-    cam_det = sys.argv[2] if len(sys.argv) > 2 else False
-    cam_cls = sys.argv[3] if len(sys.argv) > 3 else False
+    cam_det = eval(sys.argv[2]) if len(sys.argv) > 2 else False
+    cam_cls = eval(sys.argv[3]) if len(sys.argv) > 3 else False
     main(img, cam_detection=cam_det, cam_cls=cam_cls)
 else:
     for img in list_img:
