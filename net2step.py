@@ -163,13 +163,20 @@ def main(image, cam_detection = False, cam_cls = False):
     cv2.imwrite(f'{result_path}/detection.jpg', np_array_image2)
     cv2.destroyAllWindows()
 
-list_img = os.listdir(TEST_PATH)
-
 if len(sys.argv) > 1:
-    img = sys.argv[1]
+    img_input = sys.argv[1]
     cam_det = eval(sys.argv[2]) if len(sys.argv) > 2 else False
+    print(cam_det)
     cam_cls = eval(sys.argv[3]) if len(sys.argv) > 3 else False
-    main(img, cam_detection=cam_det, cam_cls=cam_cls)
+    print(cam_cls)
+    if os.path.isdir(img_input):
+        list_img = os.listdir(img_input)
+        for img in list_img:
+            main(f"{img_input}/{img}", cam_detection=cam_det, cam_cls=cam_cls)
+    elif os.path.isfile(img_input):
+        main(img_input, cam_detection=cam_det, cam_cls=cam_cls)
+    else: print("Directory o immagine non validi!")
 else:
+    list_img = os.listdir(TEST_PATH)
     for img in list_img:
         main(TEST_PATH+img, cam_detection=False, cam_cls=False)
