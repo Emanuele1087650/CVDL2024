@@ -48,20 +48,30 @@ pip install -r requirements.txt
 
 La funzione main accetta tre parametri opzionali per eseguire la detection e la classificazione a due step.
 
-+ `<immagine>`: Percorso dell'immagine su cui eseguire la detection e la classificazione.
++ `<immagine>` o `<cartella di immagini>`: Specifica il percorso dell'immagine. In alternativa inserire il perocrso di una cartella di immagini.
 + `<Grad-Cam>`: Specifica se utilizzare Grad-Cam per la detection. Valori accettati: `True` o `False`.
 + `<EigenCAM>`: Specifica se utilizzare EigenCAM per la classificazione. Valori accettati: `True` o `False`.
 
-Un esempio di utilizzo è il seguente:
+Il comando per l'utilizzo specificando un'immagine è il seguente:
 
 ```bash
 python3 net2step.py '<immagine>' <cam_detection> <cam_classification>
 ```
 
-Se non si desidera provare su una singola immagine, nella cartella di progetto sono presenti dele immagini di prova.
-Con il comando seguente verrà fatta l'inferenza su tutte le immagini in cartella.
+In alternativa, specificando una cartella di immagini, verrà fatta l'inferenza su tutte le immagini in cartella.
+```bash
+python3 net2step.py '<cartella di immagini>' <cam_detection> <cam_classification>
+```
+
+Se non si desidera provare su specifiche immagini, nella cartella di progetto sono presenti delle immagini di prova.
+Con il comando seguente verrà fatta l'inferenza su tutte le immagini nella cartella `test`. I parametri `<Grad-Cam>` e `<EigenCAM>` sono impostati a `False`.
 ```bash
 python3 net2step.py
+```
+
+Di seguito è riportato un esempio di utilizzo sulle immagini della cartella `test` attivando `<Grad-Cam>`:
+```bash
+python3 net2step.py 'test' True False
 ```
 
 ## Risultati
