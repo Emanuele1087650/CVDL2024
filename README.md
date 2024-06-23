@@ -29,6 +29,16 @@ conda create -n net2step python=3.9
 conda activate net2step
 ```
 
+Per prima cosa verificare di avere `git` installato e clonare la repository mediante il seguente comando:
+```bash
+git clone https://github.com/Emanuele1087650/CVDL2024
+```
+
+Successivamente, spostarsi all'interno della cartella di lavoro:
+```bash
+cd CVDL2024
+```
+
 Installare le dipendenze necessarie:
 ```bash
 pip install -r requirements.txt
