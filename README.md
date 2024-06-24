@@ -90,3 +90,9 @@ Risultati/
     └── detection.jpg
 ```
 
+## Contributors
+
+| Contributor Name      | GitHub                                  |
+|:----------------------|:----------------------------------------|
+| ⭐ **Biccheri Emanuele**  | [Click here](https://github.com/Emanuele1087650) |
+| ⭐ **De Ritis Riccardo**   | [Click here](https://github.com/RiccardoDR) |
