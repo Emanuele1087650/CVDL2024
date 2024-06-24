@@ -166,9 +166,7 @@ def main(image, cam_detection = False, cam_cls = False):
 if len(sys.argv) > 1:
     img_input = sys.argv[1]
     cam_det = eval(sys.argv[2]) if len(sys.argv) > 2 else False
-    print(cam_det)
     cam_cls = eval(sys.argv[3]) if len(sys.argv) > 3 else False
-    print(cam_cls)
     if os.path.isdir(img_input):
         list_img = os.listdir(img_input)
         for img in list_img:
