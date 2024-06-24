@@ -48,7 +48,7 @@ pip install -r requirements.txt
 
 La funzione main accetta tre parametri opzionali per eseguire la detection e la classificazione a due step.
 
-+ `<immagine>` o `<cartella di immagini>`: Specifica il percorso dell'immagine. In alternativa inserire il perocrso di una cartella di immagini.
++ `<immagine>` o `<cartella di immagini>`: Specifica il percorso dell'immagine. In alternativa inserire il percorso di una cartella di immagini.
 + `<Grad-Cam>`: Specifica se utilizzare Grad-Cam per la detection. Valori accettati: `True` o `False`.
 + `<EigenCAM>`: Specifica se utilizzare EigenCAM per la classificazione. Valori accettati: `True` o `False`.
 
